@@ -26,11 +26,14 @@ class LineClient
   end
 
   def reply(replyToken, text)
+    
+    # Postからランダムで返事を選ぶ。
+    @post=Post.offset(rand(Post.count)).first
 
     messages = [
       {
         "type" => "text" ,
-        "text" => text
+        "text" => @post.name
       }
     ]
 
